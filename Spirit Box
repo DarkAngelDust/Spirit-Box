@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spirit Box Radio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    #radio-display {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #frequency {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="radio-display">
+    <h1>Spirit Box Radio</h1>
+    <p id="frequency">Scanning...</p>
+  </div>
+
+  <script>
+    function getRandomFrequency() {
+      // Generate a random frequency between AM and FM ranges
+      const amFrequency = Math.floor(Math.random() * (1700 - 540 + 1)) + 540;
+      const fmFrequency = (Math.random() * (108 - 88)) + 88;
+      return Math.random() < 0.5 ? `AM ${amFrequency}` : `FM ${fmFrequency.toFixed(1)}`;
+    }
+
+    function scanForFrequencies() {
+      setInterval(() => {
+        const frequency = getRandomFrequency();
+        document.getElementById('frequency').textContent = frequency;
+      }, 2000); // Scan every 2 seconds
+    }
+
+    scanForFrequencies();
+  </script>
+</body>
+</html>
